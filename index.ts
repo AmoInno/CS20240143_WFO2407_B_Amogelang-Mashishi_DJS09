@@ -45,9 +45,16 @@ function showReviewTotal(
 
 showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser);
 
-const you = {
-  userName: "Amogelang",
+const you: {
+  firstName: string;
+  lastName: string;
+  isReturning: boolean;
+  age: number;
+} = {
+  firstName: "Amogelang",
+  lastName: "Mashishi",
   isReturning: true,
+  age: 25,
 };
 
 function populateUser(isReturning: boolean, userName: string) {
@@ -57,4 +64,4 @@ function populateUser(isReturning: boolean, userName: string) {
   userNameDisplay.innerHTML = userName;
 }
 
-populateUser(you.isReturning, you.userName);
+populateUser(you.isReturning, you.firstName);

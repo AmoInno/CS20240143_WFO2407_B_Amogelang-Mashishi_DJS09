@@ -39,8 +39,10 @@ function showReviewTotal(value, reviewer, isLoyaltyUser) {
 }
 showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser);
 const you = {
-    userName: "Amogelang",
+    firstName: "Amogelang",
+    lastName: "Mashishi",
     isReturning: true,
+    age: 25,
 };
 function populateUser(isReturning, userName) {
     if (isReturning) {
@@ -48,4 +50,4 @@ function populateUser(isReturning, userName) {
     }
     userNameDisplay.innerHTML = userName;
 }
-populateUser(you.isReturning, you.userName);
+populateUser(you.isReturning, you.firstName);
