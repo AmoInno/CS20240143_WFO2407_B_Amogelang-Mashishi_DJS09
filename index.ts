@@ -25,9 +25,20 @@ const reviews = [
   },
 ];
 
-function showReviewTotal(value: number) {
-  return (reviewTotalDisplay.innerHTML =
-    "total reviews available are: " + value.toString());
+function showReviewTotal(
+  value: number,
+  reviewer: string,
+  isLoyaltyUser: boolean
+) {
+  if (reviewTotalDisplay) {
+    const loyalUserIcon = isLoyaltyUser ? " ⭐" : "";
+    reviewTotalDisplay.innerHTML =
+      "total reviews available are: " +
+      value.toString() +
+      "| last reviewed by " +
+      reviewer +
+      loyalUserIcon;
+  }
 }
 
-showReviewTotal(reviews.length);
+showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser);
