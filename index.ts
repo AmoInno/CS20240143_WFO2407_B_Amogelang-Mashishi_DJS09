@@ -6,7 +6,14 @@ const reviewTotalDisplay = document.querySelector("#reviews");
 const returningUserDisplay = document.querySelector("#returning-user");
 const userNameDisplay = document.querySelector("#user");
 
-const reviews = [
+//Reviews
+
+const reviews: {
+  name: string;
+  stars: number;
+  loyaltyUser: boolean;
+  date: string;
+}[] = [
   {
     name: "Sheia",
     stars: 5,
@@ -43,18 +50,20 @@ function showReviewTotal(
   }
 }
 
-showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser);
+// User
 
 const you: {
   firstName: string;
   lastName: string;
   isReturning: boolean;
   age: number;
+  stayedAt: string[];
 } = {
   firstName: "Amogelang",
   lastName: "Mashishi",
   isReturning: true,
   age: 25,
+  stayedAt: ["florida-home", "oman-flat", "tokyo-bungalow"],
 };
 
 function populateUser(isReturning: boolean, userName: string) {
@@ -64,4 +73,62 @@ function populateUser(isReturning: boolean, userName: string) {
   userNameDisplay.innerHTML = userName;
 }
 
+// Properties
+const properties: {
+  image: string;
+  title: string;
+  price: number;
+  location: {
+    address: string;
+    city: string;
+    postcode: number;
+    country: string;
+  };
+  contact: string;
+  toRent: boolean;
+}[] = [
+  {
+    image: "",
+    title: "African TreeHouse",
+    price: 1500,
+    location: {
+      address: "65 Mandela Drive",
+      city: "Johannesburg",
+      postcode: 2001,
+      country: "South-Africa",
+    },
+    contact: "amogelangmashishi12@gmail.com",
+    toRent: true,
+  },
+  {
+    image: "",
+    title: "Irish Bungalow",
+    price: 1000,
+    location: {
+      address: "123 Bogota Drive",
+      city: "Bogota",
+      postcode: 80332,
+      country: "Irish",
+    },
+    contact: "maryjane@gmail.com",
+    toRent: false,
+  },
+  {
+    image: "",
+    title: "SpinCity",
+    price: 3000,
+    location: {
+      address: "5 hello drive ",
+      city: "Tokyo",
+      postcode: 4522,
+      country: "Japan",
+    },
+    contact: "shanghai25@gmail.com",
+    toRent: true,
+  },
+];
+
+//Functions
+
+showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser);
 populateUser(you.isReturning, you.firstName);
