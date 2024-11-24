@@ -5,6 +5,7 @@
 const reviewTotalDisplay = document.querySelector("#reviews");
 const returningUserDisplay = document.querySelector("#returning-user");
 const userNameDisplay = document.querySelector("#user");
+const propertiesDisplay = document.querySelector(".properties");
 
 //Reviews
 
@@ -73,7 +74,8 @@ function populateUser(isReturning: boolean, userName: string) {
   userNameDisplay.innerHTML = userName;
 }
 
-// Properties
+// Properties Array
+
 const properties: {
   image: string;
   title: string;
@@ -84,11 +86,11 @@ const properties: {
     postcode: number;
     country: string;
   };
-  contact: string;
+  contact: [number, string];
   toRent: boolean;
 }[] = [
   {
-    image: "",
+    image: "images/treehouse.jpeg",
     title: "African TreeHouse",
     price: 1500,
     location: {
@@ -97,11 +99,11 @@ const properties: {
       postcode: 2001,
       country: "South-Africa",
     },
-    contact: "amogelangmashishi12@gmail.com",
+    contact: [+211773032811, "amogelangmashishi12@gmail.com"],
     toRent: true,
   },
   {
-    image: "",
+    image: "images/irish.jpg",
     title: "Irish Bungalow",
     price: 1000,
     location: {
@@ -110,12 +112,12 @@ const properties: {
       postcode: 80332,
       country: "Irish",
     },
-    contact: "maryjane@gmail.com",
+    contact: [+279991273613, "maryjane@gmail.com"],
     toRent: false,
   },
   {
-    image: "",
-    title: "SpinCity",
+    image: "images/tokyo.jpg",
+    title: "Tokyo Cottage",
     price: 3000,
     location: {
       address: "5 hello drive ",
@@ -123,12 +125,39 @@ const properties: {
       postcode: 4522,
       country: "Japan",
     },
-    contact: "shanghai25@gmail.com",
+    contact: [+25372888827, "shanghai25@gmail.com"],
     toRent: true,
   },
 ];
 
-//Functions
+function showProperties() {
+  // Clear existing content
+  propertiesDisplay.innerHTML = "";
+
+  // Loop through each property and create a div container for each property
+  properties.forEach((property) => {
+    const propertyDiv = document.createElement("div");
+    propertyDiv.className = "property";
+
+    // Create and set the title
+    const titleElement = document.createElement("h2");
+    titleElement.textContent = property.title;
+
+    // Create and set the image
+    const imageElement = document.createElement("img");
+    imageElement.src = property.image;
+
+    // Append title and image to the property div
+    propertyDiv.appendChild(titleElement);
+    propertyDiv.appendChild(imageElement);
+
+    // Append property div to display div
+    propertiesDisplay?.appendChild(propertyDiv);
+  });
+}
+
+// Calling of Functions
 
 showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser);
 populateUser(you.isReturning, you.firstName);
+showProperties();
