@@ -3,6 +3,8 @@
 // all TypeScript weakness flags.
 // : number
 const reviewTotalDisplay = document.querySelector("#reviews");
+const returningUserDisplay = document.querySelector("#returning-user");
+const userNameDisplay = document.querySelector("#user");
 
 const reviews = [
   {
@@ -42,3 +44,17 @@ function showReviewTotal(
 }
 
 showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser);
+
+const you = {
+  userName: "Amogelang",
+  isReturning: true,
+};
+
+function populateUser(isReturning: boolean, userName: string) {
+  if (isReturning) {
+    returningUserDisplay.innerHTML = "back";
+  }
+  userNameDisplay.innerHTML = userName;
+}
+
+populateUser(you.isReturning, you.userName);
